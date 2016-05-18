@@ -1,0 +1,269 @@
+fileFormatVersion: 2
+guid: eb2aaada477a54762b9352947b253cf4
+timeCreated: 1463393990
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: cars_0
+    21300002: cars_1
+    21300004: cars_2
+    21300006: cars_3
+    21300008: cars_4
+    21300010: cars_5
+    21300012: cars_6
+    21300014: cars_7
+    21300016: cars_8
+    21300018: cars_9
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -3
+    compressionQuality: 50
+    allowsAlphaSplitting: 0
+  spriteSheet:
+    sprites:
+    - name: cars_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 339
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 98.5, y: 177}
+        - {x: 94.5, y: 182}
+        - {x: -95.5, y: 182}
+        - {x: -98.5, y: 179}
+        - {x: -98.5, y: -181}
+        - {x: -97.5, y: -182}
+        - {x: 95.5, y: -182}
+        - {x: 97.5, y: -181}
+        - {x: 98.5, y: -178}
+    - name: cars_1
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 0
+        width: 338
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93.914566, y: 182}
+        - {x: -96.914566, y: 181}
+        - {x: -97.914566, y: 178}
+        - {x: -97.914566, y: -180}
+        - {x: -95.914566, y: -182}
+        - {x: 97.085434, y: -182}
+        - {x: 99.085434, y: -180}
+        - {x: 99.085434, y: 178}
+        - {x: 95.085434, y: 182}
+    - name: cars_2
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 0
+        width: 339
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -95.32913, y: 182}
+        - {x: -98.32913, y: 179}
+        - {x: -98.32913, y: -180}
+        - {x: -96.32913, y: -182}
+        - {x: 96.67087, y: -182}
+        - {x: 98.67087, y: -180}
+        - {x: 98.67087, y: 179}
+        - {x: 95.67087, y: 182}
+    - name: cars_3
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 0
+        width: 340
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 95.33539, y: 182}
+        - {x: -93.66461, y: 182}
+        - {x: -96.66461, y: 181}
+        - {x: -96.66461, y: 179}
+        - {x: -98.66461, y: 177}
+        - {x: -98.66461, y: -180}
+        - {x: -95.66461, y: -182}
+        - {x: 96.33539, y: -182}
+        - {x: 99.33539, y: -179}
+        - {x: 99.33539, y: 179}
+    - name: cars_4
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 0
+        width: 339
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -94.07916, y: 182}
+        - {x: -97.07916, y: 178}
+        - {x: -97.07916, y: 176}
+        - {x: -98.07916, y: 175}
+        - {x: -98.07916, y: -177}
+        - {x: -97.07916, y: -180}
+        - {x: -94.07916, y: -182}
+        - {x: 97.92084, y: -182}
+        - {x: 99.92084, y: -180}
+        - {x: 99.92084, y: 179}
+        - {x: 96.92084, y: 182}
+    - name: cars_5
+      rect:
+        serializedVersion: 2
+        x: 1777
+        y: 0
+        width: 338
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -93.91455, y: 182}
+        - {x: -97.91455, y: 178}
+        - {x: -97.91455, y: -180}
+        - {x: -95.91455, y: -182}
+        - {x: 97.08545, y: -182}
+        - {x: 98.08545, y: -181}
+        - {x: 98.08545, y: 180}
+        - {x: 96.08545, y: 182}
+    - name: cars_6
+      rect:
+        serializedVersion: 2
+        x: 2131
+        y: 0
+        width: 340
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -94.408325, y: 182}
+        - {x: -98.408325, y: 177}
+        - {x: -98.408325, y: -178}
+        - {x: -95.408325, y: -182}
+        - {x: 97.591675, y: -182}
+        - {x: 98.591675, y: -181}
+        - {x: 98.591675, y: 179}
+        - {x: 95.591675, y: 182}
+    - name: cars_7
+      rect:
+        serializedVersion: 2
+        x: 2488
+        y: 4
+        width: 338
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 97.33533, y: 182.31645}
+        - {x: -97.66467, y: 182.31645}
+        - {x: -97.66467, y: -181.68355}
+        - {x: 97.33533, y: -181.68355}
+        - {x: 99.33533, y: -180.68355}
+        - {x: 99.33533, y: 180.31645}
+    - name: cars_8
+      rect:
+        serializedVersion: 2
+        x: 2842
+        y: 4
+        width: 340
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 97.841675, y: 182.31645}
+        - {x: -94.158325, y: 182.31645}
+        - {x: -97.158325, y: 180.31645}
+        - {x: -98.158325, y: 177.31645}
+        - {x: -98.158325, y: -176.68355}
+        - {x: -94.158325, y: -181.68355}
+        - {x: 96.841675, y: -181.68355}
+        - {x: 99.841675, y: -179.68355}
+        - {x: 99.841675, y: 180.31645}
+    - name: cars_9
+      rect:
+        serializedVersion: 2
+        x: 3198
+        y: 4
+        width: 337
+        height: 628
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -95.993774, y: 182.31645}
+        - {x: -96.993774, y: 181.31645}
+        - {x: -97.993774, y: 177.31645}
+        - {x: -97.993774, y: -177.68355}
+        - {x: -94.993774, y: -181.68355}
+        - {x: 96.006226, y: -181.68355}
+        - {x: 98.006226, y: -179.68355}
+        - {x: 98.006226, y: 181.31645}
+        - {x: 97.006226, y: 182.31645}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
