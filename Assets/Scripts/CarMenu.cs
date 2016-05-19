@@ -97,6 +97,23 @@ public class CarMenu : MonoBehaviour {
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 
+		} else {
+
+			if (GameController.instance.coins >= 200) {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "¿Quieres comprar este carro?";
+				yesBtn.onClick.RemoveAllListeners ();
+				yesBtn.onClick.AddListener (() => BuyPlayer (2, 200));
+				noCoinsBtn.gameObject.SetActive (false);
+			} else {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
+				yesBtn.gameObject.SetActive (false);
+				noBtn.gameObject.SetActive (false);
+				noCoinsBtn.gameObject.SetActive (true);
+
+			}
+
 		}
 
 	}
@@ -111,6 +128,23 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+
+		} else {
+
+			if (GameController.instance.coins >= 300) {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "¿Quieres comprar este carro?";
+				yesBtn.onClick.RemoveAllListeners ();
+				yesBtn.onClick.AddListener (() => BuyPlayer (3, 300));
+				noCoinsBtn.gameObject.SetActive (false);
+			} else {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
+				yesBtn.gameObject.SetActive (false);
+				noBtn.gameObject.SetActive (false);
+				noCoinsBtn.gameObject.SetActive (true);
+
+			}
 
 		}
 
@@ -127,6 +161,23 @@ public class CarMenu : MonoBehaviour {
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 
+		} else {
+
+			if (GameController.instance.coins >= 400) {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "¿Quieres comprar este carro?";
+				yesBtn.onClick.RemoveAllListeners ();
+				yesBtn.onClick.AddListener (() => BuyPlayer (4, 400));
+				noCoinsBtn.gameObject.SetActive (false);
+			} else {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
+				yesBtn.gameObject.SetActive (false);
+				noBtn.gameObject.SetActive (false);
+				noCoinsBtn.gameObject.SetActive (true);
+
+			}
+
 		}
 
 	}
@@ -141,6 +192,23 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+
+		} else {
+
+			if (GameController.instance.coins >= 500) {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "¿Quieres comprar este carro?";
+				yesBtn.onClick.RemoveAllListeners ();
+				yesBtn.onClick.AddListener (() => BuyPlayer (5, 500));
+				noCoinsBtn.gameObject.SetActive (false);
+			} else {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
+				yesBtn.gameObject.SetActive (false);
+				noBtn.gameObject.SetActive (false);
+				noCoinsBtn.gameObject.SetActive (true);
+
+			}
 
 		}
 
@@ -157,6 +225,23 @@ public class CarMenu : MonoBehaviour {
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 
+		} else {
+
+			if (GameController.instance.coins >= 600) {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "¿Quieres comprar este carro?";
+				yesBtn.onClick.RemoveAllListeners ();
+				yesBtn.onClick.AddListener (() => BuyPlayer (6, 600));
+				noCoinsBtn.gameObject.SetActive (false);
+			} else {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
+				yesBtn.gameObject.SetActive (false);
+				noBtn.gameObject.SetActive (false);
+				noCoinsBtn.gameObject.SetActive (true);
+
+			}
+
 		}
 
 	}
@@ -171,6 +256,23 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+
+		} else {
+
+			if (GameController.instance.coins >= 700) {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "¿Quieres comprar este carro?";
+				yesBtn.onClick.RemoveAllListeners ();
+				yesBtn.onClick.AddListener (() => BuyPlayer (7, 700));
+				noCoinsBtn.gameObject.SetActive (false);
+			} else {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
+				yesBtn.gameObject.SetActive (false);
+				noBtn.gameObject.SetActive (false);
+				noCoinsBtn.gameObject.SetActive (true);
+
+			}
 
 		}
 
@@ -188,6 +290,23 @@ public class CarMenu : MonoBehaviour {
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 
+		} else {
+
+			if (GameController.instance.coins >= 800) {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "¿Quieres comprar este carro?";
+				yesBtn.onClick.RemoveAllListeners ();
+				yesBtn.onClick.AddListener (() => BuyPlayer (8, 800));
+				noCoinsBtn.gameObject.SetActive (false);
+			} else {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
+				yesBtn.gameObject.SetActive (false);
+				noBtn.gameObject.SetActive (false);
+				noCoinsBtn.gameObject.SetActive (true);
+
+			}
+
 		}
 
 	}
@@ -202,6 +321,23 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+
+		} else {
+
+			if (GameController.instance.coins >= 900) {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "¿Quieres comprar este carro?";
+				yesBtn.onClick.RemoveAllListeners ();
+				yesBtn.onClick.AddListener (() => BuyPlayer (9, 900));
+				noCoinsBtn.gameObject.SetActive (false);
+			} else {
+				buyPlayerPanel.SetActive (true);
+				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
+				yesBtn.gameObject.SetActive (false);
+				noBtn.gameObject.SetActive (false);
+				noCoinsBtn.gameObject.SetActive (true);
+
+			}
 
 		}
 

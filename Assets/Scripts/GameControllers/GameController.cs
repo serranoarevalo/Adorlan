@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour {
 
 	private GameData data;
 
-	public int currentLevel;
+	public int currentLevel = -1 ;
 	public int currentScore;
 
 	public bool isGameStartedFirstTime;
@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour {
 			highScore = 0;
 
 			players = new bool[10];
-			levels = new bool[25];
+			levels = new bool[20];
 
 			players [0] = true;
 			for (int i = 1; i < players.Length; i++) {
