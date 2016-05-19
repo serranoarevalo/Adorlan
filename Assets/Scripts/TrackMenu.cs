@@ -42,6 +42,13 @@ public class TrackMenu : MonoBehaviour {
 
 	}
 
+	public void LoadLevel(){
+		
+		string level = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
+
+		SceneManager.LoadScene (level);
+	}
+
 	public void GoToCarMenu(){
 		SceneManager.LoadScene ("SelectCar");
 		MusicController.instance.PlayClick ();
