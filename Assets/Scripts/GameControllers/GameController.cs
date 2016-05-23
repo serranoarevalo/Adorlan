@@ -28,7 +28,8 @@ public class GameController : MonoBehaviour {
 	void Awake(){
 		MakeSingleton ();
 		InitializeGameVariables ();
-		if (isMusicOn) {
+
+		if (isMusicOn && MusicController.instance != null) {
 			MusicController.instance.PlayBgMusic ();
 		}
 	}
@@ -43,6 +44,10 @@ public class GameController : MonoBehaviour {
 	}
 
 	void InitializeGameVariables(){
+
+		if (isMusicOn) {
+			MusicController.instance.PlayBgMusic ();
+		}
 
 		Load ();
 

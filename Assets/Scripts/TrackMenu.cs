@@ -46,7 +46,89 @@ public class TrackMenu : MonoBehaviour {
 		
 		string level = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
 
-		SceneManager.LoadScene (level);
+
+		switch (level) {
+		case "Level0":
+			GameController.instance.currentLevel = 0;
+			SceneManager.LoadScene ("Level0");
+			break;
+		case "Level1":
+			GameController.instance.currentLevel = 1;
+			SceneManager.LoadScene ("Level1");
+			break;
+		case "Level2":
+			GameController.instance.currentLevel = 2;
+			SceneManager.LoadScene ("Level2");
+			break;
+		case "Level3":
+			GameController.instance.currentLevel = 3;
+			SceneManager.LoadScene ("Level3");
+			break;
+		case "Level4":
+			GameController.instance.currentLevel = 4;
+			SceneManager.LoadScene ("Level4");
+			break;
+		case "Level5":
+			GameController.instance.currentLevel = 5;
+			SceneManager.LoadScene ("Level5");
+			break;
+		case "Level6":
+			GameController.instance.currentLevel = 6;
+			SceneManager.LoadScene ("Level6");
+			break;
+		case "Level7":
+			GameController.instance.currentLevel = 7;
+			SceneManager.LoadScene ("Level7");
+			break;
+		case "Level8":
+			GameController.instance.currentLevel = 8;
+			SceneManager.LoadScene ("Level8");
+			break;
+		case "Level9":
+			GameController.instance.currentLevel = 9;
+			SceneManager.LoadScene ("Level9");
+			break;
+		case "Level10":
+			GameController.instance.currentLevel = 10;
+			SceneManager.LoadScene ("Level10");
+			break;
+		case "Level11":
+			GameController.instance.currentLevel = 11;
+			SceneManager.LoadScene ("Level11");
+			break;
+		case "Level12":
+			GameController.instance.currentLevel = 12;
+			SceneManager.LoadScene ("Level12");
+			break;
+		case "Level13":
+			GameController.instance.currentLevel = 13;
+			SceneManager.LoadScene ("Level13");
+			break;
+		case "Level14":
+			GameController.instance.currentLevel = 14;
+			SceneManager.LoadScene ("Level14");
+			break;
+		case "Level15":
+			GameController.instance.currentLevel = 15;
+			SceneManager.LoadScene ("Level15");
+			break;
+		case "Level16":
+			GameController.instance.currentLevel = 16;
+			SceneManager.LoadScene ("Level16");
+			break;
+		case "Level17":
+			GameController.instance.currentLevel = 17;
+			SceneManager.LoadScene ("Level17");
+			break;
+		case "Level18":
+			GameController.instance.currentLevel = 18;
+			SceneManager.LoadScene ("Level18");
+			break;
+		case "Level19":
+			GameController.instance.currentLevel = 19;
+			SceneManager.LoadScene ("Level19");
+			break;
+		}
 	}
 
 	public void GoToCarMenu(){

@@ -11,6 +11,8 @@ public class CarMenu : MonoBehaviour {
 
 	public Image[] priceTags;
 
+	public Text[] selectText;
+
 	public int selectedPlayer;
 
 	public GameObject buyPlayerPanel;
@@ -22,6 +24,8 @@ public class CarMenu : MonoBehaviour {
 	public Button noCoinsBtn;
 
 	public Text buyPlayerText;
+
+	public Button nextButton;
 
 
 	// Use this for initialization
@@ -39,6 +43,8 @@ public class CarMenu : MonoBehaviour {
 		for (int i = 1; i < players.Length; i++) {
 			if (players [i] == true) {
 				priceTags [i - 1].gameObject.SetActive (false);
+				selectText [i - 1].gameObject.SetActive (true);
+
 			}
 		}
 	}
@@ -51,6 +57,7 @@ public class CarMenu : MonoBehaviour {
 
 		GameController.instance.selectedPlayer = selectedPlayer;
 		GameController.instance.Save ();
+		enableNextButton ();
 
 	}
 
@@ -64,6 +71,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 		
@@ -96,6 +104,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 
@@ -128,6 +137,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 
@@ -160,6 +170,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 
@@ -192,6 +203,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 
@@ -224,6 +236,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 
@@ -256,6 +269,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 
@@ -289,6 +303,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 
@@ -321,6 +336,7 @@ public class CarMenu : MonoBehaviour {
 
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
+			enableNextButton ();
 
 		} else {
 
@@ -343,6 +359,10 @@ public class CarMenu : MonoBehaviour {
 
 	}
 
+	public void enableNextButton(){
+		nextButton.gameObject.SetActive (true);
+	}
+
 	public void BuyPlayer(int index, int price) {
 	
 		GameController.instance.players [index] = true;
@@ -352,6 +372,7 @@ public class CarMenu : MonoBehaviour {
 
 		buyPlayerPanel.SetActive (false);
 	}
+
 
 	public void CloseBuyPanel(){
 		buyPlayerPanel.SetActive (false);
