@@ -7,7 +7,7 @@ public class GamePlayController : MonoBehaviour {
 
 	public static GamePlayController instance;
 
-	public GameObject levelFailedPanel, levelPassedPanel, pausePanel ;
+	public GameObject levelFailedPanel, levelPassedPanel, pausePanel, wrongAnswerPanel;
 
 	[SerializeField]
 	private GameObject[] players;
@@ -19,11 +19,13 @@ public class GamePlayController : MonoBehaviour {
 
 	public float levelTime;
 
-	public Text levelTimerText, currentLap;
+	public Text levelTimerText, currentLap, countDownNumbers;
 
-	private float countDownBeforeLevelBegins = 3.0f;
+	private float countDownBeforeLevelBegins = 5.0f;
 
 	private bool isGamePaused, hasLevelBegun, levelInProgress, countdownLevel;
+
+	public int levelReward;
 
 	void CreateInstance() {
 		if (instance == null)
@@ -33,6 +35,8 @@ public class GamePlayController : MonoBehaviour {
 	void InitializeGamePlayController(){
 		levelTimerText.text = levelTime.ToString ("F0");
 		Instantiate (players [GameController.instance.selectedPlayer], new Vector3(60, -50, 30), Quaternion.Euler(0, 0, 90));
+		Time.timeScale = 0;
+		countDownNumbers.text = countDownBeforeLevelBegins.ToString ("F0");
 	}
 
 	void Start() {
@@ -41,15 +45,14 @@ public class GamePlayController : MonoBehaviour {
 		currentLapNumber = 1;
 		currentLap.text = currentLapNumber.ToString ();
 
-		if (Time.timeScale == 0) {
-			Time.timeScale = 1;
-		}
-
+		hasLevelBegun = false;
 	}
 
 	void Update() {
 		LevelCountDownTime ();
 		CheckLapAndTime ();
+
+		CountDownAndBeginLevel ();
 	}
 
 	void LevelCountDownTime() {
@@ -80,6 +83,7 @@ public class GamePlayController : MonoBehaviour {
 
 	public void RestartLevel() {
 		levelFailedPanel.SetActive (false);
+		wrongAnswerPanel.SetActive (false);
 		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
 
@@ -89,9 +93,16 @@ public class GamePlayController : MonoBehaviour {
 
 	public void AnswerQuestion() {
 		if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.tag == "Correct") {
-			Debug.Log ("Correcto!");
+			GameController.instance.coins += levelReward * 10000;
+			GameController.instance.levels [1] = true;
+			GameController.instance.Save ();
+			SceneManager.LoadScene ("SelectTrack");
+			
 		} else {
-			Debug.Log ("Incorrecto!");
+			currentLapNumber = 0;
+			levelPassedPanel.SetActive (false);
+			wrongAnswerPanel.SetActive (true);
+		
 		}
 	}
 
@@ -104,8 +115,17 @@ public class GamePlayController : MonoBehaviour {
 		pausePanel.SetActive (false);
 		Time.timeScale = 1;
 	}
-
-
-
+		
+	void CountDownAndBeginLevel() {
+		if (!hasLevelBegun) {
+			countDownBeforeLevelBegins -= (0.19f * 0.15f);
+			countDownNumbers.text = countDownBeforeLevelBegins.ToString ("F0");
+			if (countDownBeforeLevelBegins <= 0) {
+				Time.timeScale = 1;
+				countDownNumbers.gameObject.SetActive (false);
+				hasLevelBegun = true;
+			}
+		}
+	}
 
 }

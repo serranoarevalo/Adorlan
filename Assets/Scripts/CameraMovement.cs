@@ -13,9 +13,15 @@ public class CameraMovement : MonoBehaviour {
 
 	void Update() {
 
-		player = GameObject.FindWithTag("Player");
+		if (player != null) {
+			transform.position = new Vector3 (player.transform.position.x, player.transform.position.y, transform.position.z);
+		} else {
+			GetPlayer ();
+		}
 
-		transform.position = new Vector3 (player.transform.position.x, player.transform.position.y, transform.position.z);
+	}
 
+	void GetPlayer() {
+		player = GameObject.FindWithTag ("Player");
 	}
 }
