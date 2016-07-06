@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	public bool isGameStartedFirstTime;
 	public bool isMusicOn;
 	public bool areEffectsOn;
+	public bool isApproved;
 
 	public int selectedPlayer;
 	public int selectedLevel;
@@ -28,10 +29,6 @@ public class GameController : MonoBehaviour {
 	void Awake(){
 		MakeSingleton ();
 		InitializeGameVariables ();
-
-		if (isMusicOn && MusicController.instance != null) {
-			MusicController.instance.PlayBgMusic ();
-		}
 	}
 		
 	void MakeSingleton(){
@@ -45,10 +42,6 @@ public class GameController : MonoBehaviour {
 
 	void InitializeGameVariables(){
 
-		if (isMusicOn) {
-			MusicController.instance.PlayBgMusic ();
-		}
-
 		Load ();
 
 		if (data != null) {
@@ -61,8 +54,9 @@ public class GameController : MonoBehaviour {
 		if (isGameStartedFirstTime) {
 
 			isGameStartedFirstTime = false;
-			isMusicOn = false;
-			areEffectsOn = false;
+			isMusicOn = true;
+			areEffectsOn = true;
+			isApproved = false;
 
 			selectedPlayer = 0;
 			selectedLevel = 0;
@@ -108,6 +102,7 @@ public class GameController : MonoBehaviour {
 			isGameStartedFirstTime = data.getIsGameStartedFirstTime ();
 			isMusicOn = data.getIsMusicOn ();
 			areEffectsOn = data.getAreEffectsOn ();
+			isApproved = data.getIsApproved ();
 
 			highScore = data.getHighScore();
 			coins = data.getCoins();
@@ -137,6 +132,7 @@ public class GameController : MonoBehaviour {
 				data.setIsGameStartedFirstTime(isGameStartedFirstTime);
 				data.setIsMusicOn(isMusicOn);
 				data.setAreEffectsOn(areEffectsOn);
+				data.setIsApproved(isApproved);
 
 				data.setSelectedPlayer(selectedPlayer);
 				data.setSelectedLevel(selectedLevel);
@@ -188,6 +184,7 @@ class GameData {
 	private bool isGameStartedFirstTime;
 	private bool isMusicOn;
 	private bool areEffectsOn;
+	private bool isApproved;
 
 	private int selectedPlayer;
 	private int selectedLevel;
@@ -268,4 +265,13 @@ class GameData {
 	public bool[] getLevels(){
 		return this.levels;
 	}
+
+	public void setIsApproved(bool isApproved){
+		this.isApproved = isApproved;
+	}
+
+	public bool getIsApproved(){
+		return this.isApproved;
+	}
+
 }

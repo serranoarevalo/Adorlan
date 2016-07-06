@@ -54,7 +54,7 @@ public class CarMenu : MonoBehaviour {
 		if (selectedPlayer != 0) {
 			selectedPlayer = 0;
 		}
-
+		MusicController.instance.PlayClick ();
 		GameController.instance.selectedPlayer = selectedPlayer;
 		GameController.instance.Save ();
 		enableNextButton ();
@@ -68,7 +68,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 1) {
 				selectedPlayer = 1;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();
@@ -101,7 +101,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 2) {
 				selectedPlayer = 2;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();
@@ -134,7 +134,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 3) {
 				selectedPlayer = 3;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();
@@ -167,7 +167,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 4) {
 				selectedPlayer = 4;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();
@@ -200,7 +200,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 5) {
 				selectedPlayer = 5;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();
@@ -233,7 +233,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 6) {
 				selectedPlayer = 6;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();
@@ -266,7 +266,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 7) {
 				selectedPlayer = 7;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();
@@ -300,7 +300,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 8) {
 				selectedPlayer = 8;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();
@@ -333,7 +333,7 @@ public class CarMenu : MonoBehaviour {
 			if (selectedPlayer != 9) {
 				selectedPlayer = 9;
 			}
-
+			MusicController.instance.PlayClick ();
 			GameController.instance.selectedPlayer = selectedPlayer;
 			GameController.instance.Save ();
 			enableNextButton ();

@@ -18,6 +18,7 @@ public class TrackMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		InitializeLevelMenu ();
+		MusicController.instance.StopTrackFX ();
 	}
 	
 	// Update is called once per frame

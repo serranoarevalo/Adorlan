@@ -4,11 +4,10 @@ using System.Collections;
 public class CameraMovement : MonoBehaviour {
 
 	private GameObject player;
-	private Vector3 offset;
 
-	void Start(){
+	void Awake(){
 
-		offset = transform.position - player.transform.position;
+		GetPlayer ();
 	}
 
 	void Update() {
