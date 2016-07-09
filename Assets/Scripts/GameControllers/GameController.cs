@@ -17,11 +17,14 @@ public class GameController : MonoBehaviour {
 	public bool isMusicOn;
 	public bool areEffectsOn;
 	public bool isApproved;
+	public bool hasToken;
 
 	public int selectedPlayer;
 	public int selectedLevel;
 	public int coins;
 	public int highScore;
+
+	public string tokenString;
 
 	public bool[] players;
 	public bool[] levels;
@@ -57,6 +60,9 @@ public class GameController : MonoBehaviour {
 			isMusicOn = true;
 			areEffectsOn = true;
 			isApproved = false;
+			hasToken = false;
+
+			tokenString = "";
 
 			selectedPlayer = 0;
 			selectedLevel = 0;
@@ -82,9 +88,13 @@ public class GameController : MonoBehaviour {
 
 			data.setIsGameStartedFirstTime (isGameStartedFirstTime);
 			data.setIsMusicOn (isMusicOn);
+			data.setIsApproved (isApproved);
+			data.setHasToken (hasToken);
 
 			data.setSelectedPlayer (selectedPlayer);
 			data.setSelectedLevel (selectedLevel);
+
+			data.setTokenString (tokenString);
 
 			data.setCoins (coins);
 			data.setHighScore (highScore);
@@ -103,6 +113,9 @@ public class GameController : MonoBehaviour {
 			isMusicOn = data.getIsMusicOn ();
 			areEffectsOn = data.getAreEffectsOn ();
 			isApproved = data.getIsApproved ();
+			hasToken = data.getHasToken ();
+
+			tokenString = data.getTokenString ();
 
 			highScore = data.getHighScore();
 			coins = data.getCoins();
@@ -133,9 +146,12 @@ public class GameController : MonoBehaviour {
 				data.setIsMusicOn(isMusicOn);
 				data.setAreEffectsOn(areEffectsOn);
 				data.setIsApproved(isApproved);
+				data.setHasToken(hasToken);
 
 				data.setSelectedPlayer(selectedPlayer);
 				data.setSelectedLevel(selectedLevel);
+
+				data.setTokenString(tokenString);
 
 				data.setCoins(coins);
 				data.setHighScore(highScore);
@@ -185,6 +201,9 @@ class GameData {
 	private bool isMusicOn;
 	private bool areEffectsOn;
 	private bool isApproved;
+	private bool hasToken;
+
+	private string tokenString;
 
 	private int selectedPlayer;
 	private int selectedLevel;
@@ -272,6 +291,22 @@ class GameData {
 
 	public bool getIsApproved(){
 		return this.isApproved;
+	}
+
+	public void setHasToken(bool hasToken){
+		this.hasToken = hasToken;
+	}
+
+	public bool getHasToken(){
+		return this.hasToken;
+	}
+
+	public void setTokenString(string tokenString){
+		this.tokenString = tokenString;
+	}
+
+	public string getTokenString(){
+		return this.tokenString;
 	}
 
 }

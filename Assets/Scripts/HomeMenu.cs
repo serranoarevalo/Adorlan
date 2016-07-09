@@ -6,16 +6,17 @@ using UnityEngine.UI;
 public class HomeMenu : MonoBehaviour {
 
 	[SerializeField]
-	private GameObject panel, blockedPanel, sendBtn, sendingText, sendingErrorText, startGameBtn, successText;
+	private GameObject panel, blockedPanel, sendBtn, sendingText, sendingErrorText, startGameBtn, successText, tokenForm, createTokenForm, sendingTextToken, sendTokenForm, sendingErrorTokenText, closeApp, successTokenText, checkingToken, tokenSent, playBtn;
 	[SerializeField]
-	private Text musicText, effectsText, nameText, lastNameText, emailText, tokenText;
+	private Text musicText, effectsText, nameText, lastNameText, emailText, tokenText, tokenNameText, tokenLastNameText, tokenEmailText, tokenTokenText, tokenButtonText, checkTokenSub;
+	[SerializeField]
+	private InputField tokenField;
 
-	private bool hasName, hasLastName, hasEmail, hasToken;
+	private bool hasName, hasLastName, hasEmail, hasToken,hasTokenName, hasTokenLastName, hasTokenEmail;
 
-	public string jsonObj;
+	public string tokenString;
 
-	public string url = "http://127.0.0.1:8000/pre-approved";
-
+	private string tokenFromServer;
 
 	void Start(){
 
@@ -38,9 +39,56 @@ public class HomeMenu : MonoBehaviour {
 
 		if (GameController.instance.isApproved) {
 			blockedPanel.gameObject.SetActive (false);
+		} else if (GameController.instance.hasToken && !GameController.instance.isApproved) {
+			checkingToken.gameObject.SetActive (true);
+			MusicController.instance.StopBgMusic ();
+			checkTokenWithAPI ();
 		} else {
 			blockedPanel.gameObject.SetActive (true);
 			MusicController.instance.StopBgMusic ();
+		}
+	}
+
+	public void checkTokenWithAPI(){
+		if (GameController.instance.hasToken && GameController.instance.tokenString.Length > 1) {
+			WWWForm tokenOnlyForm = new WWWForm ();
+
+			tokenOnlyForm.AddField ("token", GameController.instance.tokenString);
+
+			WWW www = new WWW ("http://127.0.0.1:8000/tokens", tokenOnlyForm);
+
+			StartCoroutine (StartCheckingToken (www));
+
+		}
+	}
+
+	IEnumerator StartCheckingToken(WWW www)
+	{
+		yield return 360;
+
+		StartCoroutine(CheckTokenRequest(www));
+	}
+
+	IEnumerator CheckTokenRequest(WWW www) 
+	{
+		yield return www;
+
+		if (www.error == null) 
+		{
+			Debug.Log (www.text);
+
+			checkTokenSub.text = "Tu token ha sido aprobado";
+
+			playBtn.gameObject.SetActive (true);
+
+			GameController.instance.isApproved = true;
+			GameController.instance.Save ();
+		} 
+		else 
+		{
+			Debug.Log ("WWW Error: " + www.error);
+
+			checkTokenSub.text = "Tu token todavía no ha sido aprobado";
 		}
 	}
 
@@ -83,6 +131,10 @@ public class HomeMenu : MonoBehaviour {
 
 			successText.gameObject.SetActive (true);
 
+			GameController.instance.isApproved = true;
+
+			GameController.instance.Save ();
+
 		}
 		else
 		{
@@ -95,12 +147,74 @@ public class HomeMenu : MonoBehaviour {
 		}
 	}
 
-	public void StartGame(){
-		GameController.instance.isApproved = true;
+	public void SendTokenForm(){
 
-		GameController.instance.Save ();
+		string tokenString = "" + System.DateTime.Now.ToString("s") + "" + SystemInfo.deviceUniqueIdentifier;
+
+		Debug.Log (tokenString);
+		if (hasTokenName && hasTokenLastName && hasTokenEmail) {
+			WWWForm tokenJsonForm = new WWWForm();
+
+			tokenJsonForm.AddField("name",tokenNameText.text.ToString ());
+			tokenJsonForm.AddField("last_name",tokenLastNameText.text.ToString ());
+			tokenJsonForm.AddField("email", tokenEmailText.text.ToString ());
+			tokenJsonForm.AddField("token", tokenString);
+
+			WWW www = new WWW ("http://127.0.0.1:8000/users", tokenJsonForm);
+
+			StartCoroutine(WaitForRequestToken(www, tokenString));
+
+			sendingTextToken.gameObject.SetActive (true);
+
+
+		}
+	}
+
+	IEnumerator WaitForRequestToken(WWW www, string tokenString)
+	{
+		yield return www;
+
+		Debug.Log (www.text);
+
+		if (www.error == null)
+		{
+			Debug.Log("Approved");
+
+			sendingTextToken.gameObject.SetActive (false);
+
+			closeApp.gameObject.SetActive (true);
+
+			sendTokenForm.gameObject.SetActive (false);
+
+			successTokenText.gameObject.SetActive (true);
+
+			Debug.Log (tokenString);
+
+			GameController.instance.tokenString = tokenString;
+			GameController.instance.hasToken = true;
+			GameController.instance.Save ();
+
+		}
+		else
+		{
+			Debug.Log("WWW Error: " + www.error);
+
+			sendingTextToken.gameObject.SetActive (false);
+
+			sendingErrorTokenText.gameObject.SetActive (true);
+
+		}
+	}
+
+	public void FinishToken(){
+		createTokenForm.gameObject.SetActive (false);
+		tokenSent.gameObject.SetActive (true);
+	}
+
+	public void StartGame(){
 
 		blockedPanel.gameObject.SetActive (false);
+		checkingToken.gameObject.SetActive (false);
 
 		MusicController.instance.PlayBgMusic ();
 	}
@@ -135,6 +249,30 @@ public class HomeMenu : MonoBehaviour {
 			hasToken = true;
 		} else {
 			hasToken = false;
+		}
+	}
+
+	public void checkTokenName(){
+		if (tokenNameText.text.Length > 1) {
+			hasTokenName = true;
+		} else {
+			hasTokenName = false;
+		}
+	}
+
+	public void checkTokenLastName(){
+		if (tokenLastNameText.text.Length > 1) {
+			hasTokenLastName = true;
+		} else {
+			hasTokenLastName = false;
+		}
+	}
+
+	public void checkTokenEmail(){
+		if (tokenEmailText.text.Length > 1) {
+			hasTokenEmail = true;
+		} else {
+			hasTokenEmail = false;
 		}
 	}
 
@@ -177,5 +315,24 @@ public class HomeMenu : MonoBehaviour {
 			GameController.instance.Save ();
 			musicText.text = "Apagar";
 		}
+	}
+
+	public void GoToTokenForm(){
+		blockedPanel.gameObject.SetActive (false);
+		tokenForm.gameObject.SetActive (true);
+	}
+
+	public void GoBackFromToken(){
+		tokenForm.gameObject.SetActive (false);
+		createTokenForm.gameObject.SetActive (false);
+		blockedPanel.gameObject.SetActive (true);
+	}
+
+	public void GoToCreateTokenForm(){
+		blockedPanel.gameObject.SetActive (false);
+		createTokenForm.gameObject.SetActive (true);
+
+		tokenField.interactable = false;
+		tokenField.text = SystemInfo.deviceUniqueIdentifier;
 	}
 }
