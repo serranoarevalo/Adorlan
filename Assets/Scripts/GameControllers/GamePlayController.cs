@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class GamePlayController : MonoBehaviour {
 
@@ -26,6 +28,10 @@ public class GamePlayController : MonoBehaviour {
 	private bool isGamePaused, hasLevelBegun, levelInProgress, countdownLevel, nextLevel, checkedLap;
 
 	public int levelReward;
+
+	private int currentHighScore;
+
+	public string leaderboard;
 
 	void CreateInstance() {
 		if (instance == null)
@@ -61,6 +67,7 @@ public class GamePlayController : MonoBehaviour {
 		CheckLapAndTime ();
 
 		CountDownAndBeginLevel ();
+
 	}
 
 	void LevelCountDownTime() {
@@ -115,6 +122,27 @@ public class GamePlayController : MonoBehaviour {
 
 	public void AnswerQuestion() {
 		if (UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.tag == "Correct") {
+
+			currentHighScore = GameController.instance.highScores[GameController.instance.currentLevel];
+
+			Debug.Log (currentHighScore);
+
+			if (currentHighScore < (int)levelTime) {
+				GameController.instance.highScores [GameController.instance.currentLevel] = (int)levelTime;
+
+				if (Social.localUser.authenticated) {
+					Social.ReportScore ((long)levelTime, leaderboard, (bool success) =>
+						{
+							if (success) {
+								Debug.Log ("Update Score Success");
+
+							} else {
+								Debug.Log ("Update Score Fail");
+							}
+						});
+				}
+			}
+
 			currentLapNumber = 0;
 			levelPassedPanel.SetActive (false);
 			nextLevel = GameController.instance.levels[GameController.instance.currentLevel + 1];
@@ -123,8 +151,12 @@ public class GamePlayController : MonoBehaviour {
 			} else {
 				rewardOne.text = "+ 10 Monedas";
 			}
-			if (nextLevel == false && GameController.instance.currentLevel != 19 ) {
+			if (nextLevel == false && GameController.instance.currentLevel != 19 && currentHighScore < (int)levelTime) {
+				rewardTwo.text = "Nueva pista desbloqueada\nNuevo tiempo record";
+			} else if (nextLevel == false && GameController.instance.currentLevel != 19) {
 				rewardTwo.text = "Nueva pista desbloqueada";
+			} else if (currentHighScore < (int)levelTime) {
+				rewardTwo.text = "Nuevo tiempo record";
 			} else {
 				rewardTwo.text = "";
 			}

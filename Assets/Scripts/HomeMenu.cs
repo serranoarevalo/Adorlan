@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class HomeMenu : MonoBehaviour {
 
@@ -24,6 +26,9 @@ public class HomeMenu : MonoBehaviour {
 		hasLastName = false;
 		hasEmail = false;
 		hasToken = false;
+		hasTokenName = false;
+		hasTokenLastName = false;
+		hasTokenEmail = false; 
 
 		if (GameController.instance.areEffectsOn) {
 			effectsText.text = "Apagar";
@@ -39,6 +44,8 @@ public class HomeMenu : MonoBehaviour {
 
 		if (GameController.instance.isApproved) {
 			blockedPanel.gameObject.SetActive (false);
+			PlayGamesPlatform.Activate ();
+			LogIn();
 		} else if (GameController.instance.hasToken && !GameController.instance.isApproved) {
 			checkingToken.gameObject.SetActive (true);
 			MusicController.instance.StopBgMusic ();
@@ -47,6 +54,20 @@ public class HomeMenu : MonoBehaviour {
 			blockedPanel.gameObject.SetActive (true);
 			MusicController.instance.StopBgMusic ();
 		}
+
+
+	}
+
+	public void LogIn()
+	{
+		Social.localUser.Authenticate ((bool success) =>
+			{
+				if (success) {
+					Debug.Log ("Login Sucess");
+				} else {
+					Debug.Log ("Login failed");
+				}
+			});
 	}
 
 	public void checkTokenWithAPI(){
@@ -55,7 +76,7 @@ public class HomeMenu : MonoBehaviour {
 
 			tokenOnlyForm.AddField ("token", GameController.instance.tokenString);
 
-			WWW www = new WWW ("http://127.0.0.1:8000/tokens", tokenOnlyForm);
+			WWW www = new WWW ("http://adorlan.herokuapp.com/tokens", tokenOnlyForm);
 
 			StartCoroutine (StartCheckingToken (www));
 
@@ -102,7 +123,7 @@ public class HomeMenu : MonoBehaviour {
 			jsonForm.AddField("email",emailText.text.ToString ());
 			jsonForm.AddField("token",tokenText.text.ToString ());
 
-			WWW www = new WWW ("http://127.0.0.1:8000/pre-approved", jsonForm);
+			WWW www = new WWW ("http://adorlan.herokuapp.com/pre-approved", jsonForm);
 
 			StartCoroutine(WaitForRequest(www));
 
@@ -160,7 +181,7 @@ public class HomeMenu : MonoBehaviour {
 			tokenJsonForm.AddField("email", tokenEmailText.text.ToString ());
 			tokenJsonForm.AddField("token", tokenString);
 
-			WWW www = new WWW ("http://127.0.0.1:8000/users", tokenJsonForm);
+			WWW www = new WWW ("http://adorlan.herokuapp.com/users", tokenJsonForm);
 
 			StartCoroutine(WaitForRequestToken(www, tokenString));
 
@@ -214,9 +235,13 @@ public class HomeMenu : MonoBehaviour {
 	public void StartGame(){
 
 		blockedPanel.gameObject.SetActive (false);
+		tokenForm.gameObject.SetActive (false);
 		checkingToken.gameObject.SetActive (false);
 
 		MusicController.instance.PlayBgMusic ();
+
+		PlayGamesPlatform.Activate ();
+		LogIn();
 	}
 
 
@@ -334,5 +359,9 @@ public class HomeMenu : MonoBehaviour {
 
 		tokenField.interactable = false;
 		tokenField.text = SystemInfo.deviceUniqueIdentifier;
+	}
+
+	public void OpenLeaderBoard(){
+		Social.ShowLeaderboardUI ();
 	}
 }

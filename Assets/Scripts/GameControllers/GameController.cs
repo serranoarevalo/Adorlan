@@ -22,12 +22,16 @@ public class GameController : MonoBehaviour {
 	public int selectedPlayer;
 	public int selectedLevel;
 	public int coins;
-	public int highScore;
 
 	public string tokenString;
 
 	public bool[] players;
 	public bool[] levels;
+	public bool[] achivements;
+
+	public int[] highScores;
+
+
 
 	void Awake(){
 		MakeSingleton ();
@@ -68,10 +72,11 @@ public class GameController : MonoBehaviour {
 			selectedLevel = 0;
 
 			coins = 0;
-			highScore = 0;
 
 			players = new bool[10];
 			levels = new bool[20];
+			achivements = new bool[7];
+			highScores = new int[20];
 
 			players [0] = true;
 			for (int i = 1; i < players.Length; i++) {
@@ -81,6 +86,14 @@ public class GameController : MonoBehaviour {
 			levels [0] = true;
 			for (int i = 1; i < levels.Length; i++) {
 				levels [i] = false;
+			}
+
+			for (int i = 0; i < achivements.Length; i++) {
+				achivements [i] = false;
+			}
+
+			for (int i = 0; i < highScores.Length; i++) {
+				highScores [i] = 0;
 			}
 
 			data = new GameData ();
@@ -97,11 +110,12 @@ public class GameController : MonoBehaviour {
 			data.setTokenString (tokenString);
 
 			data.setCoins (coins);
-			data.setHighScore (highScore);
 			data.setAreEffectsOn (areEffectsOn);
 
 			data.setPlayers (players);
 			data.setLevels (levels);
+			data.setAchivements (achivements);
+			data.setHighScores (highScores);
 
 			Save ();
 
@@ -117,14 +131,17 @@ public class GameController : MonoBehaviour {
 
 			tokenString = data.getTokenString ();
 
-			highScore = data.getHighScore();
 			coins = data.getCoins();
 
 			selectedPlayer = data.getSelectedPlayer ();
 			selectedLevel = data.getSelectedLevel ();
+			achivements = data.getAchivements ();
+			highScores = data.getHighScores ();
 
 			players = data.getPlayers ();
 			levels = data.getLevels ();
+			achivements = data.getAchivements ();
+
 
 
 		}
@@ -154,10 +171,11 @@ public class GameController : MonoBehaviour {
 				data.setTokenString(tokenString);
 
 				data.setCoins(coins);
-				data.setHighScore(highScore);
 
 				data.setPlayers(players);
 				data.setLevels(levels);
+				data.setAchivements(achivements);
+				data.setHighScores(highScores);
 
 				bf.Serialize(file, data);
 			}
@@ -173,6 +191,8 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void Load(){
+
+
 		FileStream file = null;
 
 		try{
@@ -208,10 +228,12 @@ class GameData {
 	private int selectedPlayer;
 	private int selectedLevel;
 	private int coins;
-	private int highScore;
 
 	private bool[] players;
 	private bool[] levels;
+	private bool[] achivements;
+
+	private int[] highScores;
 
 	public void setIsGameStartedFirstTime(bool isGameStartedFirstTime){
 		this.isGameStartedFirstTime = isGameStartedFirstTime;
@@ -251,14 +273,6 @@ class GameData {
 
 	public int getSelectedLevel(){
 		return this.selectedLevel;
-	}
-
-	public void setHighScore(int highScore){
-		this.highScore = highScore;
-	}
-
-	public int getHighScore(){
-		return this.highScore;
 	}
 
 	public void setCoins(int coins){
@@ -309,4 +323,19 @@ class GameData {
 		return this.tokenString;
 	}
 
+	public void setAchivements(bool[] achivements){
+		this.achivements = achivements;
+	}
+
+	public bool[] getAchivements(){
+		return this.achivements;
+	}
+
+	public void setHighScores(int[] highScores){
+		this.highScores = highScores;
+	}
+
+	public int[] getHighScores(){
+		return this.highScores;
+	}
 }

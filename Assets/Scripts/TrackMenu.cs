@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using GooglePlayGames;
+using UnityEngine.SocialPlatforms;
 
 public class TrackMenu : MonoBehaviour {
 
@@ -52,6 +54,9 @@ public class TrackMenu : MonoBehaviour {
 		case "Level0":
 			GameController.instance.currentLevel = 0;
 			SceneManager.LoadScene ("Level0");
+			Social.ReportProgress("CgkI9J7KgKwcEAIQAA",100.0f,(bool success) => {
+					
+			});
 			break;
 		case "Level1":
 			GameController.instance.currentLevel = 1;
