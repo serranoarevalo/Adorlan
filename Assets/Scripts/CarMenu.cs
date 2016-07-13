@@ -114,6 +114,8 @@ public class CarMenu : MonoBehaviour {
 				yesBtn.onClick.RemoveAllListeners ();
 				yesBtn.onClick.AddListener (() => BuyPlayer (2, 200));
 				noCoinsBtn.gameObject.SetActive (false);
+				Social.ReportProgress("CgkI9J7KgKwcEAIQBA",100.0f,(bool success) => {
+				});
 			} else {
 				buyPlayerPanel.SetActive (true);
 				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
@@ -213,6 +215,8 @@ public class CarMenu : MonoBehaviour {
 				yesBtn.onClick.RemoveAllListeners ();
 				yesBtn.onClick.AddListener (() => BuyPlayer (5, 500));
 				noCoinsBtn.gameObject.SetActive (false);
+				Social.ReportProgress("CgkI9J7KgKwcEAIQBQ",100.0f,(bool success) => {
+				});
 			} else {
 				buyPlayerPanel.SetActive (true);
 				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";
@@ -346,6 +350,8 @@ public class CarMenu : MonoBehaviour {
 				yesBtn.onClick.RemoveAllListeners ();
 				yesBtn.onClick.AddListener (() => BuyPlayer (9, 900));
 				noCoinsBtn.gameObject.SetActive (false);
+				Social.ReportProgress("CgkI9J7KgKwcEAIQBg",100.0f,(bool success) => {
+				});
 			} else {
 				buyPlayerPanel.SetActive (true);
 				buyPlayerText.text = "No tienes suficientes monedas. Consigue monedas completando niveles.";

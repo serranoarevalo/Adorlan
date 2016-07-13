@@ -29,7 +29,7 @@ public class GamePlayController : MonoBehaviour {
 
 	public int levelReward;
 
-	private int currentHighScore;
+	private int currentHighScore, scoreTime;
 
 	public string leaderboard;
 
@@ -40,6 +40,7 @@ public class GamePlayController : MonoBehaviour {
 
 	void Awake() {
 		Instantiate (players [GameController.instance.selectedPlayer], new Vector3(60, -50, 30), Quaternion.Euler(0, 0, 90));
+		scoreTime = (int)levelTime;
 	}
 
 	void InitializeGamePlayController(){
@@ -125,13 +126,17 @@ public class GamePlayController : MonoBehaviour {
 
 			currentHighScore = GameController.instance.highScores[GameController.instance.currentLevel];
 
+
+			scoreTime = scoreTime - (int)levelTime;
+
 			Debug.Log (currentHighScore);
 
-			if (currentHighScore < (int)levelTime) {
-				GameController.instance.highScores [GameController.instance.currentLevel] = (int)levelTime;
+
+			if (currentHighScore > scoreTime) {
+				GameController.instance.highScores [GameController.instance.currentLevel] = (int)scoreTime;
 
 				if (Social.localUser.authenticated) {
-					Social.ReportScore ((long)levelTime, leaderboard, (bool success) =>
+					Social.ReportScore ((long)scoreTime, leaderboard, (bool success) =>
 						{
 							if (success) {
 								Debug.Log ("Update Score Success");
@@ -145,13 +150,13 @@ public class GamePlayController : MonoBehaviour {
 
 			currentLapNumber = 0;
 			levelPassedPanel.SetActive (false);
-			nextLevel = GameController.instance.levels[GameController.instance.currentLevel + 1];
+			if(GameController.instance.currentLevel != 19) nextLevel = GameController.instance.levels[GameController.instance.currentLevel + 1];
 			if (nextLevel == false) {
 				rewardOne.text = "+ " + levelReward.ToString ("F0") + " Monedas";	
 			} else {
 				rewardOne.text = "+ 10 Monedas";
 			}
-			if (nextLevel == false && GameController.instance.currentLevel != 19 && currentHighScore < (int)levelTime) {
+			if (nextLevel == false && GameController.instance.currentLevel != 19 && currentHighScore > scoreTime) {
 				rewardTwo.text = "Nueva pista desbloqueada\nNuevo tiempo record";
 			} else if (nextLevel == false && GameController.instance.currentLevel != 19) {
 				rewardTwo.text = "Nueva pista desbloqueada";

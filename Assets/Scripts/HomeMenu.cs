@@ -364,4 +364,8 @@ public class HomeMenu : MonoBehaviour {
 	public void OpenLeaderBoard(){
 		Social.ShowLeaderboardUI ();
 	}
+
+	public void OpenChallenges(){
+		Social.ShowAchievementsUI();	
+	}
 }

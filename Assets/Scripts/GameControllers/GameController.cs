@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour {
 			}
 
 			for (int i = 0; i < highScores.Length; i++) {
-				highScores [i] = 0;
+				highScores [i] = 1000;
 			}
 
 			data = new GameData ();

@@ -54,9 +54,6 @@ public class TrackMenu : MonoBehaviour {
 		case "Level0":
 			GameController.instance.currentLevel = 0;
 			SceneManager.LoadScene ("Level0");
-			Social.ReportProgress("CgkI9J7KgKwcEAIQAA",100.0f,(bool success) => {
-					
-			});
 			break;
 		case "Level1":
 			GameController.instance.currentLevel = 1;
@@ -73,6 +70,8 @@ public class TrackMenu : MonoBehaviour {
 		case "Level4":
 			GameController.instance.currentLevel = 4;
 			SceneManager.LoadScene ("Level4");
+			Social.ReportProgress("CgkI9J7KgKwcEAIQAA",100.0f,(bool success) => {
+			});
 			break;
 		case "Level5":
 			GameController.instance.currentLevel = 5;
@@ -93,6 +92,8 @@ public class TrackMenu : MonoBehaviour {
 		case "Level9":
 			GameController.instance.currentLevel = 9;
 			SceneManager.LoadScene ("Level9");
+			Social.ReportProgress("CgkI9J7KgKwcEAIQAQ",100.0f,(bool success) => {
+			});
 			break;
 		case "Level10":
 			GameController.instance.currentLevel = 10;
@@ -113,6 +114,8 @@ public class TrackMenu : MonoBehaviour {
 		case "Level14":
 			GameController.instance.currentLevel = 14;
 			SceneManager.LoadScene ("Level14");
+			Social.ReportProgress("CgkI9J7KgKwcEAIQAg",100.0f,(bool success) => {
+			});
 			break;
 		case "Level15":
 			GameController.instance.currentLevel = 15;
@@ -133,6 +136,8 @@ public class TrackMenu : MonoBehaviour {
 		case "Level19":
 			GameController.instance.currentLevel = 19;
 			SceneManager.LoadScene ("Level19");
+			Social.ReportProgress("CgkI9J7KgKwcEAIQAw",100.0f,(bool success) => {
+			});
 			break;
 		}
 	}
